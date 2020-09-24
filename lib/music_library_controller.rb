@@ -1,6 +1,3 @@
-#!/usr/bin/env ruby
-
-require_relative '../config/environment'
 class MusicLibraryController
   
   def initialize(path = "./db/mp3s")
@@ -13,7 +10,5 @@ class MusicLibraryController
     puts "To list all of your songs, enter 'list songs'."
   end 
   
-
-MusicLibraryController.new.call
-
+  
 end
