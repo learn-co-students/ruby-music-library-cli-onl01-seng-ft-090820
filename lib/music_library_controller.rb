@@ -1,7 +1,5 @@
 class MusicLibraryController
 
-  attr_accessor :path
-
   def initialize(path='./db/mp3s')
     @path = path
     MusicImporter.new(path).import
@@ -24,18 +22,17 @@ class MusicLibraryController
       puts "What would you like to do?"
 
       case input
-      when 'list songs'
-        self.list_songs
-      when 'list artists'
-        self.list_artists
-      when 'list genres'
-        self.list_genres
-      when 'list songs by artist'
-        self.list_songs_by_artist
-      when 'list songs by genre'
-        self.list_songs_by_genre
-      when 'play song'
-
+        when 'list songs'
+          self.list_songs
+        when 'list artists'
+          self.list_artists
+        when 'list genres'
+          self.list_genres
+        when 'list songs by artist'
+          self.list_songs_by_artist
+        when 'list songs by genre'
+          self.list_songs_by_genre
+        when 'play song'
       end
     end
   end
