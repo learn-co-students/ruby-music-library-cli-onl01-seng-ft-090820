@@ -17,6 +17,7 @@ describe "Associations — Song and Artist:" do
         expect(artist.songs).to eq([])
 
         artist.songs << song
+        # artist.add_song(song)
 
         expect(artist.songs).to include(song)
       end

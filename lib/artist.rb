@@ -1,39 +1,44 @@
 class Artist 
-attr_accessor :name
+attr_accessor :name, :songs
 extend Concerns::Findable 
 @@all = []
 
   def initialize(name)
   @name = name 
-  @artist = artist
-  @@all << self
+  @songs = []
   end 
   
   def self.all 
   @@all 
   end
   
+  def save 
+  @@all << self 
+  end 
+  
+  def self.destroy_all
+    @@all.clear
+  end
+  
   def self.create(name)
-  new_artist = self.new(name)
-  new_artist.save
-  new_artist 
-end
+  artist = self.new(name)
+  artist.save
+  artist 
+  end
 
   def add_song(song)
-  song.artist = self
-  end
-  
-  def songs 
-  Song.all.select {|song| song.artist == self}
-  end
-  
-  def self.find_or_create_by_name(name)
-  if @@all.find {|artist| artist.name == name}
-  return @@all.find {|artist| artist.name == name}
+  if song.artist == nil 
+    song.artist = self 
   else 
-  Artist.new(name) 
+    nil 
   end 
-  end
+  if @songs.include?(song)
+    nil 
+  else 
+    @songs << song 
+  end 
+  song
+  end 
   
   def print_songs 
   songs.each {|song| puts song.name}
@@ -48,4 +53,3 @@ end
   end 
   end
   
-end
